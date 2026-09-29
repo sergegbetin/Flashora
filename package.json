@@ -1,7 +1,7 @@
 {
   "name": "flashora",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "FLASHORA — Cyber Monday e-commerce prototype. Big deals. Smart choices.",
   "scripts": {
