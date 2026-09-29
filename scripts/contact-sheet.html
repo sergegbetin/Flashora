@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>FLASHORA asset contact sheet</title>
+<style>
+  body { margin:0; padding:24px; background:#111; color:#eee; font:13px/1.4 system-ui, sans-serif; }
+  h1 { font-size:18px; margin:0 0 18px; }
+  .grid { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+  figure { margin:0; background:#1c1c1c; border:1px solid #333; border-radius:8px; overflow:hidden; }
+  img { width:100%; height:150px; object-fit:cover; display:block; background:#2a2a2a; }
+  figcaption { padding:6px 8px; font-size:11px; color:#bbb; word-break:break-all; }
+</style>
+</head>
+<body>
+<h1>FLASHORA assets</h1>
+<div class="grid" id="grid"></div>
+<script>
+{
+  const names =["product-phone-nova","product-phone-classic","product-phone-detail","product-laptop-aero","product-laptop-mockup","product-laptop-gaming","product-watch-pulse","product-watch-hand","product-headphones-sonic","product-headphones-classic","product-audio-detail","product-earbuds-airtune","product-earbuds-alt","product-speaker-boom","product-speaker-studio","product-headset-arena","product-vr-headset","product-keyboard-velocity","product-keyboard-keys","product-mouse-glide","product-console-nova","product-controller-propad","product-controller-alt","product-controller-xbox","product-lamp-lumen","product-lamp-led","product-lamp-ambient","product-home-speaker","product-home-hub","product-home-theater","product-backpack-urban","product-backpack-day","product-gadget-pouch","product-fitness-dumbbells","product-fitness-mat","product-fitness-workout","product-gift-set","product-charger-fast","product-desk-setup","category-tech","category-gaming","category-audio","category-home","category-lifestyle","gift-him","gift-her","gift-gamers","gift-tech","editorial-listen","editorial-travel","editorial-shopping","editorial-flatlay","editorial-workout","mobile-mockup","hero-set"];
+  document.getElementById('grid').innerHTML = names.map(n =>
+    `<figure><img src="../public/images/${n}.jpg" alt="${n}"><figcaption>${n}</figcaption></figure>`).join('');
+}
+</script>
+</body>
+</html>

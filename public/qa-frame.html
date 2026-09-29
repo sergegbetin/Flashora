@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>FLASHORA responsive QA frame</title>
+<style>
+  html, body { margin: 0; background: #7a7a7a; }
+  #stage { position: relative; overflow: hidden; margin: 0 auto; box-shadow: 0 0 0 1px #444; }
+  #frame { position: absolute; top: 0; left: 0; border: 0; transform-origin: top left; background: #fff; }
+  #label { position: fixed; left: 8px; bottom: 8px; z-index: 9; background: #111; color: #fff;
+           font: 11px/1.2 system-ui, sans-serif; padding: 4px 8px; border-radius: 6px; }
+</style>
+</head>
+<body>
+  <div id="stage"><iframe id="frame" title="FLASHORA preview"></iframe></div>
+  <div id="label"></div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const w = Number(params.get('w') || 1440);
+    const h = Number(params.get('h') || 7000);
+    const scale = Number(params.get('scale') || 1);
+    const route = (() => {
+      let r = params.get('route') || '/';
+      if (!r.startsWith('/')) r = '/' + r;        // '#/' -> '/#/', 'shop' -> '/shop'
+      if (r.startsWith('//')) r = '/' + r.slice(1); // block protocol-relative URLs
+      return r;
+    })();
+    const frame = document.getElementById('frame');
+    const stage = document.getElementById('stage');
+    frame.style.width = w + 'px';
+    frame.style.height = h + 'px';
+    frame.style.transform = 'scale(' + scale + ')';
+    stage.style.width = Math.round(w * scale) + 'px';
+    stage.style.height = Math.round(h * scale) + 'px';
+    frame.src = route;
+    document.getElementById('label').textContent = w + 'px viewport · ' + route;
+  </script>
+</body>
+</html>
