@@ -18,8 +18,19 @@
 <script>
 {
   const names =["product-phone-nova","product-phone-classic","product-phone-detail","product-laptop-aero","product-laptop-mockup","product-laptop-gaming","product-watch-pulse","product-watch-hand","product-headphones-sonic","product-headphones-classic","product-audio-detail","product-earbuds-airtune","product-earbuds-alt","product-speaker-boom","product-speaker-studio","product-headset-arena","product-vr-headset","product-keyboard-velocity","product-keyboard-keys","product-mouse-glide","product-console-nova","product-controller-propad","product-controller-alt","product-controller-xbox","product-lamp-lumen","product-lamp-led","product-lamp-ambient","product-home-speaker","product-home-hub","product-home-theater","product-backpack-urban","product-backpack-day","product-gadget-pouch","product-fitness-dumbbells","product-fitness-mat","product-fitness-workout","product-gift-set","product-charger-fast","product-desk-setup","category-tech","category-gaming","category-audio","category-home","category-lifestyle","gift-him","gift-her","gift-gamers","gift-tech","editorial-listen","editorial-travel","editorial-shopping","editorial-flatlay","editorial-workout","mobile-mockup","hero-set"];
-  document.getElementById('grid').innerHTML = names.map(n =>
-    `<figure><img src="../public/images/${n}.jpg" alt="${n}"><figcaption>${n}</figcaption></figure>`).join('');
+  const grid = document.getElementById('grid');
+  for (const n of names) {
+    // Construction DOM (pas d'innerHTML) : aucune interpolation de chaîne HTML.
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    img.src = '../public/images/' + n + '.jpg';
+    img.alt = n;
+    img.loading = 'lazy';
+    const caption = document.createElement('figcaption');
+    caption.textContent = n;
+    figure.append(img, caption);
+    grid.appendChild(figure);
+  }
 }
 </script>
 </body>
